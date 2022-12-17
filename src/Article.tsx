@@ -5,7 +5,7 @@ import articleImg from '../public/blockchain.png'
 import heartImg from '../public/Heart-empty.png'
 import Link from 'next/link';
 
-import LikeButton from './ArticleButton'
+import LikeButton from './LikeButton'
 
 
 interface GetArticleProps {
@@ -41,7 +41,13 @@ const Article = (props: GetArticleProps) => {
         
         <Link href = {
             {pathname:"/ArticleViewer",
-            query: props.buttonProp.properties.files.uri}
+            query: {
+                uri: props.buttonProp.properties.files.uri,
+                files: props.buttonProp.properties.files,
+                properties: props.buttonProp.properties,
+                fullData: props.buttonProp
+            }
+        }
         } >
                  {/* <div className = {styles["article-border"]}></div><br></br> */}
         <React.Fragment>
@@ -51,7 +57,8 @@ const Article = (props: GetArticleProps) => {
             <div className = {styles.content}>{props.description}</div>
             <div className = {styles.image}>
                 <div>{props.author}</div>
-            <Image height = {180} src = {articleImg} alt = "Article Image"/>
+                {/* To consider the image if have time */}
+            {/* <Image height = {180} src = {articleImg} alt = "Article Image"/> */}
             </div>
             <div className = {styles.statistics}>
                 <h3>Contributors: 	&nbsp;	&nbsp;<button className = {styles["contributor-button"]} type = "button">Mike</button></h3>

@@ -13,7 +13,7 @@
     background-color: white;
     height: 1300px;
     position: absolute;
-    top: 9.5%;
+    top: 10%;
     right: 0;
     width: 25%;
 
@@ -28,8 +28,8 @@
 
 .profile-bio{
     position: absolute;
-    top: 30%;
-    left: 25%;
+    top: 25%;
+    left: 10%;
     width: 100%;
 }
 
@@ -43,8 +43,10 @@
 .description{
     position: absolute;
     left:10%;;
-    top: 40%;
-    color: black;
+    top: 32.5%;
+    color: grey;
     width: 80%;
+    font-weight:35;
+    font-family: 'Raleway', sans-serif;
 }
 

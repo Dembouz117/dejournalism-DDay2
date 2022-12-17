@@ -11,7 +11,7 @@ const HomeProfile = () => {
             <h3>Avid blockchain writer</h3>
         </div>
         
-        <h3 className = {styles.description}>Early adopter of Bitcoin. I write about the latest breakthroughs in blockchain and advocate for its mass adoption to transform lives.</h3>
+        <h3 className = {styles.description}><em>"Early adopter of Bitcoin. I write about the latest breakthroughs in blockchain and advocate for its mass adoption to transform lives."</em></h3>
     </div>
 )
 }

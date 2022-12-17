@@ -16,8 +16,12 @@ import { Journalist } from "../data/journalist";
 import * as idl from "../data/journalist.json";
 import { NodeWallet } from "@metaplex/js";
 import { Metaplex } from "@metaplex-foundation/js";
+import Spinner from 'react-bootstrap/Spinner';
 
 import Article from "../src/Article";
+
+
+
 
 const GetArticle: FC = () => {
     const { connection } = useConnection();
@@ -52,8 +56,9 @@ const GetArticle: FC = () => {
         (async () => {
             console.log("Second!");
             try {
-                console.log("Third!");
                 setLoading(true);
+                console.log("Third!");
+                // setLoading(true);
                 let pdas = await journalistProgram.account.articleAccountState.all();
                 // console.log(pdas);
                 // let lmfao = await connection.getParsedAccountInfo(new PublicKey("GoMp6aZ3U7KxsxVCo3FmZ8gkEaxPhcE9aL82Z695zrss"))
@@ -70,7 +75,7 @@ const GetArticle: FC = () => {
                 // console.log(pdfurl)
                 // console.log(Date.now());
     
-                setLoading(false);
+              
 
                 console.log(`pdas is`);
                 console.log(pdas);
@@ -78,6 +83,7 @@ const GetArticle: FC = () => {
                 pdas.map(async (pda: any)=>{
                     
                     if(pda.account.author !== "samuel"){
+                  
                         const mintAddress = new PublicKey(pda.account.mintAddress);
                         console.log(`The main address is ${pda.account.mintAddress}`);
                         const nft = await metaplex.nfts().findByMint({mintAddress});
@@ -87,7 +93,7 @@ const GetArticle: FC = () => {
                         // console.log(data);
                         // let pdfurl = data.properties.files[0].uri;
                         // console.log(pdfurl)
-                        setLoading(false);
+                        // setLoading(false);
                         
                         //This is a temporary condition to render only a valid jsx from the current program
               
@@ -106,12 +112,17 @@ const GetArticle: FC = () => {
                 console.log("Made it out of map block!");
                 
                 console.log("The final articleList is " + articleList);
+
+                setLoading(false);
      
                 
             } catch (error: any) {
                 alert(error);
                 console.log(error);
+                setLoading(false);
             }
+
+         
         })()
        
     },[]);
@@ -166,9 +177,23 @@ const GetArticle: FC = () => {
 
     return (
         <>
-        {articleList.map((jsxArticle) => {
+        {
+        !loading ? articleList.map((jsxArticle) => {
             return (jsxArticle);
-        })}
+        }) : 
+        <>
+        <Spinner animation = "grow" style = {{height:"10rem",width:"10rem"}}>
+        </Spinner><Spinner animation  = "grow" style = {{height:"10rem",width:"10rem"}}>
+        </Spinner><Spinner  animation = "grow" style = {{height:"10rem",width:"10rem"}}></Spinner>
+        <Spinner animation = "grow" style = {{height:"10rem",width:"10rem"}}></Spinner>
+        <Spinner animation = "grow" style = {{height:"10rem",width:"10rem"}}></Spinner>
+        <Spinner animation = "grow" style = {{height:"10rem",width:"10rem"}}></Spinner>
+        <Spinner animation = "grow" style = {{height:"10rem",width:"10rem"}}></Spinner>
+        </>
+        }
+        {/* {articleList.map((jsxArticle) => {
+            return (jsxArticle);
+        })} */}
         </>
     )
     // onClick();

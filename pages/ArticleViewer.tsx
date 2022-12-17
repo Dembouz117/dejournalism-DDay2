@@ -37,11 +37,38 @@ import { useRouter } from 'next/router'
 
 const ArticleViewer = () => {
 
-    const router = useRouter();
-    const data = router.query;
+    // const router = useRouter();
+    // const data = router.query;
 
-    console.log(`This is the data for: ${data}`);
-    console.log(Object.keys(data)[0]);
+    // console.log(`This is the data for: ${data}`);
+    // console.log(Object.keys(data)[0]);
+
+    const router = useRouter();
+    const{
+        query: {uri,files,properties,fullData},
+    } = router;
+    //I'll name this props to make it more intuitive to insert even tho not really props
+    const props = {
+        uri,
+        files,
+        properties,
+        fullData,
+    }
+
+    console.log("This is props.uri");
+    console.log(props.uri);
+
+    console.log("This is props.files");
+    console.log(props.files);
+
+    console.log("This is props.properties");
+    console.log(props.properties);
+
+    console.log("This is props.fullData");
+    console.log(props.fullData);
+
+
+
 
     const reactPdf = require("react-pdf/dist/esm/entry.webpack5");
     const { Document, Page } = reactPdf;
@@ -68,8 +95,9 @@ const ArticleViewer = () => {
                 </p>
             </nav>
             <div>
+            {/* similar code as yesterday */}
                 <Document
-                    file= {Object.keys(data)[0]}
+                    file= {props.uri}
                     onLoadSuccess={onDocumentLoadSuccess}
                 >
                     <div style={{ textAlign: "center" }}>

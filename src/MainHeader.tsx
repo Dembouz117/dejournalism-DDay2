@@ -1,14 +1,15 @@
 import Link from 'next/link';
 import styles from '../styles/MainHeader.module.css';
 import Image from "next/Image"
-import profileImg from "../public/profile-pic.png"
+import logoIMG from "../public/OYCLogoBig.png"
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
-import { useRouter } from "next/router"
+import { useRouter } from "next/router";
+
 
 const MainHeader = () => {
     const router = useRouter()
     return (
-        <header className = {styles.header} style = {{backgroundColor: "#d4d4d4       "}}>
+        <header className = {styles.header} style = {{backgroundColor: "#BCC2C2"}}>
         <nav>
             <ul>
                 <li>
@@ -26,7 +27,7 @@ const MainHeader = () => {
                 </li>
                 <li>
                     <Link className = {router.pathname == "Profile" ? styles.active : ""}  href = "/Profile">
-                        <Image src = {profileImg} alt = {"Top right profile picture"} className = {styles["profile-pic"]}/>
+                        <Image src = {logoIMG} alt = {"Top right profile picture"} className = {styles["profile-pic"]}/>
                     </Link>
 
                 </li>

@@ -9,7 +9,7 @@ const Articles = () => {
 
 
     return (
-        <div style = {{position:"relative", backgroundColor: "#d4d4d4", paddingTop: "30px", paddingBottom: "30px"}}>
+        <div style = {{position:"relative", backgroundColor: "#F2F3F5", paddingBottom: "30px"}}>
             {/* <Article></Article>
             <Article></Article> */}
             <GetArticle></GetArticle>
